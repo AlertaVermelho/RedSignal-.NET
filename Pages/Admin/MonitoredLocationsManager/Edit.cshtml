@@ -1,0 +1,34 @@
+@page "{id}"
+@model RedSignal.Pages.Admin.MonitoredLocationsManager.EditModel
+@{
+    ViewData["Title"] = "Editar Local Monitorado";
+}
+
+<h1>Editar Local Monitorado</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Local.NomeLocal"></label>
+        <input asp-for="Local.NomeLocal" class="form-control" />
+        <span asp-validation-for="Local.NomeLocal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Local.Latitude"></label>
+        <input asp-for="Local.Latitude" class="form-control" />
+        <span asp-validation-for="Local.Latitude" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Local.Longitude"></label>
+        <input asp-for="Local.Longitude" class="form-control" />
+        <span asp-validation-for="Local.Longitude" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Local.RaioNotificacaoKm"></label>
+        <input asp-for="Local.RaioNotificacaoKm" class="form-control" />
+        <span asp-validation-for="Local.RaioNotificacaoKm" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Local.Id" />
+    <input type="hidden" asp-for="Local.UserId" />
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>

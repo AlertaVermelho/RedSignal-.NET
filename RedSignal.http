@@ -1,0 +1,6 @@
+@RedSignal_HostAddress = http://localhost:5135
+
+GET {{RedSignal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

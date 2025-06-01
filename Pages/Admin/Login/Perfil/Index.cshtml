@@ -1,0 +1,13 @@
+@page
+@model RedSignal.Pages.Admin.Perfil.IndexModel
+@{
+    ViewData["Title"] = "Perfil do Administrador";
+}
+
+<h1>Perfil do Administrador</h1>
+
+<p><strong>Nome:</strong> Administrador</p>
+<p><strong>Usuário:</strong> @User.Identity?.Name</p>
+<p><strong>Permissão:</strong> Acesso total à área administrativa</p>
+
+<a asp-page="/Admin/MonitoredLocationsManager/Index">← Voltar</a>
