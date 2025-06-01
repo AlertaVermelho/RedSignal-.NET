@@ -35,7 +35,7 @@ O RedSignal nasce como uma resposta tecnológica ao desafio de eventos extremos 
 
 ### 2. Clonar o repositório
 ```bash
-git clone https://github.com/BeatrizFerreira01/RedSignal.git
+git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
 ```
 
 ### 3. Navegar até o projeto
