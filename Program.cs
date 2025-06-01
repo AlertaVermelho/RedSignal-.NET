@@ -7,7 +7,7 @@ using RedSignal.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Conexão com banco Oracle
-var connectionString = "User Id=RM555698;Password=fiap25;Data Source=localhost:1521/br.com.fiap.oracle;";
+var connectionString = "User Id=xxxxxx;Password=xxxxxx;Data Source=localhost:1521/br.com.fiap.oracle;";
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseOracle(connectionString)
 );
