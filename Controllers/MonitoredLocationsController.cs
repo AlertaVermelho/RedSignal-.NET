@@ -16,40 +16,37 @@ public class MonitoredLocationsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<LocalMonitorado>>> GetAll(long userId)
+    public async Task<IActionResult> GetAll(long userId)
     {
-        var result = await _service.GetAllByUserIdAsync(userId);
-        return Ok(result);
+        var locais = await _service.GetAllByUserIdAsync(userId);
+        return Ok(locais);
     }
 
     [HttpGet("{locationId}")]
-    public async Task<ActionResult<LocalMonitorado>> Get(long userId, long locationId)
+    public async Task<IActionResult> GetById(long userId, long locationId)
     {
         var local = await _service.GetByIdAsync(userId, locationId);
-        if (local == null) return NotFound();
-        return Ok(local);
+        return local == null ? NotFound() : Ok(local);
     }
 
     [HttpPost]
-    public async Task<ActionResult<LocalMonitorado>> Create(long userId, [FromBody] LocalMonitorado local)
+    public async Task<IActionResult> Create(long userId, [FromBody] LocalMonitorado local)
     {
         var created = await _service.CreateAsync(userId, local);
-        return CreatedAtAction(nameof(Get), new { userId = userId, locationId = created.Id }, created);
+        return CreatedAtAction(nameof(GetById), new { userId = created.UserId, locationId = created.Id }, created);
     }
 
     [HttpPut("{locationId}")]
-    public async Task<ActionResult<LocalMonitorado>> Update(long userId, long locationId, [FromBody] LocalMonitorado updated)
+    public async Task<IActionResult> Update(long userId, long locationId, [FromBody] LocalMonitorado local)
     {
-        var result = await _service.UpdateAsync(userId, locationId, updated);
-        if (result == null) return NotFound();
-        return Ok(result);
+        var updated = await _service.UpdateAsync(userId, locationId, local);
+        return updated == null ? NotFound() : Ok(updated);
     }
 
     [HttpDelete("{locationId}")]
     public async Task<IActionResult> Delete(long userId, long locationId)
     {
-        var deleted = await _service.DeleteAsync(userId, locationId);
-        if (!deleted) return NotFound();
-        return NoContent();
+        var success = await _service.DeleteAsync(userId, locationId);
+        return success ? NoContent() : NotFound();
     }
 }

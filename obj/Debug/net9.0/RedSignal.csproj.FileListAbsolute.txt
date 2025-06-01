@@ -424,6 +424,7 @@ C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\RedSignal.MvcAppli
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\RedSignal.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\RedSignal.RazorAssemblyInfo.cache
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\RedSignal.RazorAssemblyInfo.cs
+C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\RedSignal.sourcelink.json
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\scopedcss\bundle\RedSignal.styles.css
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\beatr\Downloads\RedSignal\RedSignal\obj\Debug\net9.0\staticwebassets.development.json
