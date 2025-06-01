@@ -40,7 +40,7 @@ git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
 
 ### 3. Navegar até o projeto
 ```bash
-cd RedSignal
+cd RedSignal-.NET
 ```
 
 ### 4. Configurar o `appsettings.json`
