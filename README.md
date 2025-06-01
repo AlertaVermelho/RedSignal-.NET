@@ -48,7 +48,7 @@ Adicione sua connection string Oracle:
 ```json
 {
   "ConnectionStrings": {
-    "OracleConnection": "User Id=RMxxxxxx;Password=xxxxxx;Data Source=localhost:1521/XEPDB1;"
+    "OracleConnection": "User Id=xxxxxx;Password=xxxxxx;Data Source=localhost:1521/XEPDB1;"
   },
   "AdminCredentials": {
     "Username": "admin",
