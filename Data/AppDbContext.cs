@@ -22,7 +22,12 @@ namespace RedSignal.Data
             modelBuilder.Entity<Usuario>()
                 .HasMany(u => u.LocaisMonitorados)
                 .WithOne(l => l.Usuario!)
-                .HasForeignKey(l => l.UserId);
+                .HasForeignKey(l => l.id_usuario_registrou);
+
+            // Adicionando índice para a chave estrangeira em LocaisMonitorados
+            modelBuilder.Entity<LocalMonitorado>()
+                .HasIndex(l => l.id_usuario_registrou)
+                .HasDatabaseName("IDX_LOCAIS_MONITORADOS_USER_ID");
         }
     }
 }

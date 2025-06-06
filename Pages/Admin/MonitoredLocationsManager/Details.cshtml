@@ -13,29 +13,29 @@
 else
 {
     <dl class="row">
-        <dt class="col-sm-2">ID</dt>
-        <dd class="col-sm-10">@Model.Local.Id</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.id_local_monitorado)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.id_local_monitorado)</dd>
 
-        <dt class="col-sm-2">User ID</dt>
-        <dd class="col-sm-10">@Model.Local.UserId</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.id_usuario_registrou)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.id_usuario_registrou)</dd>
 
-        <dt class="col-sm-2">Nome do Local</dt>
-        <dd class="col-sm-10">@Model.Local.NomeLocal</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.nome_local)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.nome_local)</dd>
 
-        <dt class="col-sm-2">Latitude</dt>
-        <dd class="col-sm-10">@Model.Local.Latitude</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.latitude)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.latitude)</dd>
 
-        <dt class="col-sm-2">Longitude</dt>
-        <dd class="col-sm-10">@Model.Local.Longitude</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.longitude)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.longitude)</dd>
 
-        <dt class="col-sm-2">Raio de Notificação (km)</dt>
-        <dd class="col-sm-10">@Model.Local.RaioNotificacaoKm</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.raio_notificacao_km)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.raio_notificacao_km)</dd>
 
-        <dt class="col-sm-2">Criado em</dt>
-        <dd class="col-sm-10">@Model.Local.DataCriacao</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.data_criacao)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.data_criacao)</dd>
 
-        <dt class="col-sm-2">Atualizado em</dt>
-        <dd class="col-sm-10">@Model.Local.DataAtualizacao</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.data_atualizacao)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.data_atualizacao)</dd>
     </dl>
 
     <a asp-page="Index">← Voltar à lista</a>

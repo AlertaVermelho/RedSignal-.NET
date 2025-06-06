@@ -16,21 +16,21 @@ public class MonitoredLocationService : IMonitoredLocationService
     public async Task<List<LocalMonitorado>> GetAllByUserIdAsync(long userId)
     {
         return await _context.LocaisMonitorados
-            .Where(x => x.UserId == userId)
+            .Where(x => x.id_usuario_registrou == userId)
             .ToListAsync();
     }
 
     public async Task<LocalMonitorado?> GetByIdAsync(long userId, long locationId)
     {
         return await _context.LocaisMonitorados
-            .FirstOrDefaultAsync(x => x.Id == locationId && x.UserId == userId);
+            .FirstOrDefaultAsync(x => x.id_local_monitorado == locationId && x.id_usuario_registrou == userId);
     }
 
     public async Task<LocalMonitorado> CreateAsync(long userId, LocalMonitorado local)
     {
-        local.UserId = userId;
-        local.DataCriacao = DateTime.UtcNow;
-        local.DataAtualizacao = DateTime.UtcNow;
+        local.id_usuario_registrou = userId;
+        local.data_criacao = DateTime.UtcNow;
+        local.data_atualizacao = DateTime.UtcNow;
 
         _context.LocaisMonitorados.Add(local);
         await _context.SaveChangesAsync();
@@ -42,11 +42,11 @@ public class MonitoredLocationService : IMonitoredLocationService
         var local = await GetByIdAsync(userId, locationId);
         if (local == null) return null;
 
-        local.NomeLocal = updated.NomeLocal;
-        local.Latitude = updated.Latitude;
-        local.Longitude = updated.Longitude;
-        local.RaioNotificacaoKm = updated.RaioNotificacaoKm;
-        local.DataAtualizacao = DateTime.UtcNow;
+        local.nome_local = updated.nome_local;
+        local.latitude = updated.latitude;
+        local.longitude = updated.longitude;
+        local.raio_notificacao_km = updated.raio_notificacao_km;
+        local.data_atualizacao = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
         return local;

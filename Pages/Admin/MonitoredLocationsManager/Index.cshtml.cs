@@ -27,8 +27,8 @@ public class IndexModel : PageModel
         var query = _context.LocaisMonitorados.AsQueryable();
 
         if (UserIdFilter.HasValue)
-            query = query.Where(l => l.UserId == UserIdFilter.Value);
+            query = query.Where(l => l.id_usuario_registrou == UserIdFilter.Value);
 
-        Locais = await query.OrderByDescending(l => l.DataCriacao).ToListAsync();
+        Locais = await query.OrderByDescending(l => l.data_criacao).ToListAsync();
     }
 }

@@ -33,7 +33,7 @@ public class MonitoredLocationsController : ControllerBase
     public async Task<IActionResult> Create(long userId, [FromBody] LocalMonitorado local)
     {
         var created = await _service.CreateAsync(userId, local);
-        return CreatedAtAction(nameof(GetById), new { userId = created.UserId, locationId = created.Id }, created);
+        return CreatedAtAction(nameof(GetById), new { userId = created.id_usuario_registrou, locationId = created.id_local_monitorado }, created);
     }
 
     [HttpPut("{locationId}")]

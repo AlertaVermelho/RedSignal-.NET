@@ -22,7 +22,7 @@ public class EditModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(long id)
     {
-        Local = await _context.LocaisMonitorados.FindAsync(id);
+        Local = await _context.LocaisMonitorados.FindAsync(id); // id is the PK, so it maps to id_local_monitorado
         if (Local == null) return NotFound();
         return Page();
     }
@@ -31,14 +31,16 @@ public class EditModel : PageModel
     {
         if (!ModelState.IsValid) return Page();
 
-        var existing = await _context.LocaisMonitorados.FindAsync(Local.Id);
+        // Local.id_local_monitorado is bound from the form
+        var existing = await _context.LocaisMonitorados.FindAsync(Local.id_local_monitorado);
         if (existing == null) return NotFound();
 
-        existing.NomeLocal = Local.NomeLocal;
-        existing.Latitude = Local.Latitude;
-        existing.Longitude = Local.Longitude;
-        existing.RaioNotificacaoKm = Local.RaioNotificacaoKm;
-        existing.DataAtualizacao = DateTime.UtcNow;
+        existing.nome_local = Local.nome_local;
+        existing.latitude = Local.latitude;
+        existing.longitude = Local.longitude;
+        existing.raio_notificacao_km = Local.raio_notificacao_km;
+        existing.data_atualizacao = DateTime.UtcNow;
+        // existing.id_usuario_registrou should not be changed here, it's set on creation.
 
         await _context.SaveChangesAsync();
         return RedirectToPage("Index");

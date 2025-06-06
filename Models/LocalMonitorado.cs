@@ -1,28 +1,41 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RedSignal.Models;
 
+[Table("LOCAIS_MONITORADOS")]
 public class LocalMonitorado
 {
-    public long Id { get; set; }
+    [Key]
+    [Column("id_local_monitorado")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public long id_local_monitorado { get; set; }
 
     [Required]
-    public string NomeLocal { get; set; } = string.Empty;
+    [Column("nome_local")]
+    public string nome_local { get; set; } = string.Empty;
 
     [Required]
-    public double Latitude { get; set; }
+    [Column("latitude")]
+    public double latitude { get; set; }
 
     [Required]
-    public double Longitude { get; set; }
+    [Column("longitude")]
+    public double longitude { get; set; }
 
     [Required]
     [Range(0.1, 999.9)]
-    public double RaioNotificacaoKm { get; set; }
+    [Column("raio_notificacao_km")]
+    public double raio_notificacao_km { get; set; }
 
-    public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
-    public DateTime DataAtualizacao { get; set; } = DateTime.UtcNow;
+    [Column("data_criacao")]
+    public DateTime data_criacao { get; set; } = DateTime.UtcNow;
+
+    [Column("data_atualizacao")]
+    public DateTime data_atualizacao { get; set; } = DateTime.UtcNow;
 
     // Chave estrangeira
-    public long UserId { get; set; }
+    [Column("id_usuario_registrou")]
+    public long id_usuario_registrou { get; set; }
     public Usuario? Usuario { get; set; }
 }
