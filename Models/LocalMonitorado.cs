@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace RedSignal.Models;
 
@@ -9,33 +10,42 @@ public class LocalMonitorado
     [Key]
     [Column("id_local_monitorado")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public long id_local_monitorado { get; set; }
+    [JsonPropertyName("id")]
+    public long Id { get; set; }
 
     [Required]
     [Column("nome_local")]
-    public string nome_local { get; set; } = string.Empty;
+    [JsonPropertyName("nomeLocal")]
+    public string NomeLocal { get; set; } = string.Empty;
 
     [Required]
     [Column("latitude")]
-    public double latitude { get; set; }
+    [JsonPropertyName("latitude")]
+    public double Latitude { get; set; }
 
     [Required]
     [Column("longitude")]
-    public double longitude { get; set; }
+    [JsonPropertyName("longitude")]
+    public double Longitude { get; set; }
 
     [Required]
     [Range(0.1, 999.9)]
     [Column("raio_notificacao_km")]
-    public double raio_notificacao_km { get; set; }
+    [JsonPropertyName("raioNotificacaoKm")]
+    public double RaioNotificacaoKm { get; set; }
 
     [Column("data_criacao")]
-    public DateTime data_criacao { get; set; } = DateTime.UtcNow;
+    [JsonPropertyName("dataCriacao")]
+    public DateTime DataCriacao { get; set; }
 
     [Column("data_atualizacao")]
-    public DateTime data_atualizacao { get; set; } = DateTime.UtcNow;
+    [JsonPropertyName("dataAtualizacao")]
+    public DateTime DataAtualizacao { get; set; }
 
-    // Chave estrangeira
     [Column("id_usuario_registrou")]
-    public long id_usuario_registrou { get; set; }
+    [JsonPropertyName("userId")]
+    public long UserId { get; set; }
+
+    [JsonIgnore]
     public Usuario? Usuario { get; set; }
 }

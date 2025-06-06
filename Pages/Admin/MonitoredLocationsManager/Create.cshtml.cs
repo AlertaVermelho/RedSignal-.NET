@@ -28,8 +28,8 @@ public class CreateModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        Local.data_criacao = DateTime.UtcNow;
-        Local.data_atualizacao = DateTime.UtcNow;
+        Local.DataCriacao = DateTime.UtcNow;
+        Local.DataAtualizacao = DateTime.UtcNow;
 
         _context.LocaisMonitorados.Add(Local);
         await _context.SaveChangesAsync();

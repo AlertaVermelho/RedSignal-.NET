@@ -1,66 +1,60 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using RedSignal.Data;
 using RedSignal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Conexão com banco Oracle
-// var connectionString = "User Id=xxxxxx;Password=xxxxxx;Data Source=localhost:1521/br.com.fiap.oracle;";
-var connectionString = builder.Configuration.GetConnectionString("OracleConnection");
+var oracleConnectionString = builder.Configuration.GetConnectionString("OracleConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseOracle(connectionString)
-);
+    options.UseOracle(oracleConnectionString));
 
-// Registro da camada de serviço
-builder.Services.AddScoped<IMonitoredLocationService, MonitoredLocationService>();
-
-// Autenticação com Cookie
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Admin/Login";
-        options.AccessDeniedPath = "/Admin/AccessDenied";
-        options.LogoutPath = "/Admin/Logout";
+        options.AccessDeniedPath = "/Admin/Login";
     });
-
-builder.Services.AddAuthorization();
+builder.Services.AddRazorPages();
 
 builder.Services.AddControllers();
 
-// Swagger
+builder.Services.AddScoped<IMonitoredLocationService, MonitoredLocationService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "RedSignal API", Version = "v1" });
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo 
+    { 
+        Title = "Red Signal C# API", 
+        Version = "v1",
+        Description = "API para gerenciamento de locais monitorados e verificação de proximidade com hotspots de eventos."
+    });
 });
-
-// Razor Pages (Admin)
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
-// Pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "RedSignal API v1");
-        c.RoutePrefix = "swagger"; // acessa via /swagger
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Red Signal API V1");
+        c.RoutePrefix = "swagger";
     });
 }
 
-app.UseStaticFiles();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();    // REST API
-app.MapRazorPages();     // Admin interface
+app.MapControllers();
+app.MapRazorPages();
 
 app.Run();

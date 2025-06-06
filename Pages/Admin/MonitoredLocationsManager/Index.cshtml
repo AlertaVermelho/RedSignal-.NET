@@ -6,21 +6,25 @@
 
 <h1>Locais Monitorados</h1>
 
+<p>
+    <a asp-page="Create" class="btn btn-primary">Criar Novo</a>
+</p>
+
 <form method="get">
     <label for="UserIdFilter">Filtrar por ID do Usuário:</label>
     <input type="number" name="UserIdFilter" value="@Model.UserIdFilter" />
     <button type="submit">Filtrar</button>
 </form>
-
+<br/>
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].id_local_monitorado)</th>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].id_usuario_registrou)</th>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].nome_local)</th>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].latitude)</th>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].longitude)</th>
-            <th>@Html.DisplayNameFor(model => model.Locais[0].raio_notificacao_km)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].UserId)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].NomeLocal)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].Latitude)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].Longitude)</th>
+            <th>@Html.DisplayNameFor(model => model.Locais[0].RaioNotificacaoKm)</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -28,16 +32,16 @@
         @foreach (var item in Model.Locais)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.id_local_monitorado)</td>
-                <td>@Html.DisplayFor(modelItem => item.id_usuario_registrou)</td>
-                <td>@Html.DisplayFor(modelItem => item.nome_local)</td>
-                <td>@Html.DisplayFor(modelItem => item.latitude)</td>
-                <td>@Html.DisplayFor(modelItem => item.longitude)</td>
-                <td>@Html.DisplayFor(modelItem => item.raio_notificacao_km)</td>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                <td>@Html.DisplayFor(modelItem => item.NomeLocal)</td>
+                <td>@Html.DisplayFor(modelItem => item.Latitude)</td>
+                <td>@Html.DisplayFor(modelItem => item.Longitude)</td>
+                <td>@Html.DisplayFor(modelItem => item.RaioNotificacaoKm)</td>
                 <td>
-                    <a asp-page="Details" asp-route-id="@item.id_local_monitorado">Detalhes</a> |
-                    <a asp-page="Edit" asp-route-id="@item.id_local_monitorado">Editar</a> |
-                    <a asp-page="Delete" asp-route-id="@item.id_local_monitorado">Deletar</a>
+                    <a asp-page="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-page="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-page="Delete" asp-route-id="@item.Id">Deletar</a>
                 </td>
             </tr>
         }

@@ -1,4 +1,4 @@
-@page "{id}"
+@page "{id:long}"
 @model RedSignal.Pages.Admin.MonitoredLocationsManager.DetailsModel
 @{
     ViewData["Title"] = "Detalhes do Local Monitorado";
@@ -13,30 +13,33 @@
 else
 {
     <dl class="row">
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.id_local_monitorado)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.id_local_monitorado)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.Id)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.Id)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.id_usuario_registrou)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.id_usuario_registrou)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.UserId)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.UserId)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.nome_local)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.nome_local)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.NomeLocal)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.NomeLocal)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.latitude)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.latitude)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.Latitude)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.Latitude)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.longitude)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.longitude)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.Longitude)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.Longitude)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.raio_notificacao_km)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.raio_notificacao_km)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.RaioNotificacaoKm)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.RaioNotificacaoKm)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.data_criacao)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.data_criacao)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.DataCriacao)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.DataCriacao)</dd>
 
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.data_atualizacao)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.data_atualizacao)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Local.DataAtualizacao)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Local.DataAtualizacao)</dd>
     </dl>
 
-    <a asp-page="Index">← Voltar à lista</a>
+    <div>
+        <a asp-page="Edit" asp-route-id="@Model.Local.Id">Editar</a> |
+        <a asp-page="Index">← Voltar à lista</a>
+    </div>
 }
