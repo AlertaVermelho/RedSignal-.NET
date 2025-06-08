@@ -7,104 +7,159 @@ Projeto desenvolvido para a disciplina de **Advanced Business Development with .
 
 ## 🎯 Contexto
 
-O RedSignal nasce como uma resposta tecnológica ao desafio de eventos extremos da natureza, proposto pela FIAP no projeto Global Solution. O objetivo é mitigar os impactos de enchentes e deslizamentos em áreas urbanas, oferecendo uma solução integrada que combina inteligência artificial, APIs REST, comunicação entre sistemas e interface administrativa para visualização de dados críticos.
+O RedSignal nasce como uma resposta tecnológica ao desafio de eventos extremos da natureza, proposto pela FIAP no projeto Global Solution. O objetivo é mitigar os impactos de enchentes e deslizamentos em áreas urbanas, por meio de uma solução integrada que combina inteligência artificial, APIs REST, comunicação entre sistemas e uma interface administrativa para visualização de dados críticos.
+
+A aplicação foi desenvolvida como uma API REST com interface administrativa, responsável por cadastrar, listar e gerenciar Locais Monitorados por usuários. A solução se integra à API Java (responsável por alertas) e à API Python (responsável por classificações via IA), possibilitando o envio de notificações personalizadas a usuários potencialmente afetados.
 
 ---
 
 ## 🔧 Tecnologias Utilizadas
 
 - ASP.NET Core (.NET 6)
-- Razor Pages
-- Entity Framework Core
-- Oracle Database
-- Swagger (Swashbuckle)
-- Autenticação com Cookies
+- Razor Pages + TagHelpers
+- Entity Framework Core + Migrations
+- Oracle Database (ou InMemory para testes)
+- Swagger (documentação automática)
+- Autenticação com Cookies (admin)
 - Integração via API REST com backend Java
-- FastAPI (Python) para serviços de IA
+
+---
+
+## 🗺️ Diagrama da Solução
+
+Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionamentos entre Usuários, Alertas, Locais Monitorados e Hotspots:
+
+![Diagrama Lógico](./Images/Logical.png)  
+![Diagrama Relacional](./Images/Relational.png)
 
 ---
 
 ## 🛠️ Como Rodar o Projeto
 
 ### 1. Pré-requisitos
+
 - .NET 6 SDK
-- Oracle Database rodando localmente
+- Oracle Database (ou usar InMemory para testes)
 - Visual Studio 2022 ou VS Code
-- Docker (opcional para deploy com banco Oracle)
 - Git
 
 ### 2. Clonar o repositório
+
 ```bash
 git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
+cd RedSignal-.NET
 ```
 
-### 3. Navegar até o projeto
-```bash
-cd RedSignal
+### 3. Executar com Banco em Memória (para testes ou vídeo)
+
+Edite o `Program.cs`:
+
+```csharp
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("RedSignalDB"));
 ```
 
-### 4. Configurar o `appsettings.json`
-Adicione sua connection string Oracle:
-```json
-{
-  "ConnectionStrings": {
-    "OracleConnection": "User Id=xxxxxx;Password=xxxxxx;Data Source=localhost:1521/XEPDB1;"
-  },
-  "AdminCredentials": {
-    "Username": "admin",
-    "Password": "admin123"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "AllowedHosts": "*"
-}
-```
+### 4. Rodar a aplicação
 
-### 5. Rodar as Migrations e atualizar o banco
-```bash
-dotnet ef database update
-```
-
-### 6. Executar o projeto
 ```bash
 dotnet run
 ```
 
-Acesse o navegador em:  
-🔗 `https://localhost:5135`
+Acesse o navegador:  
+📍 http://localhost:5135/swagger
 
 ---
 
-## 📘 Acesso ao Swagger
+## 📘 Swagger
 
-A documentação interativa da API é gerada automaticamente pelo Swagger. Após executar o projeto, acesse:
+A documentação da API está disponível em:
 
-🔗 [`https://localhost:5135/swagger`](https://localhost:5135/swagger)
-
-Lá você poderá testar os endpoints da API diretamente pelo navegador.
+📎 [http://localhost:5135/swagger](http://localhost:5135/swagger)
 
 ---
 
 ## 🔒 Login Administrativo
 
-- Usuário: `admin`  
-- Senha: `admin123`
+- Usuário: admin  
+- Senha: admin123
+
+Interface web: http://localhost:5135/Admin/MonitoredLocationsManager
 
 ---
 
-## 📋 Funcionalidades
+## 🧠 Endpoints da API
 
-| Função | Descrição |
-|:------:|:---------|
-| API REST | Gerencia Locais Monitorados para notificação de usuários |
-| Swagger | Documentação automática dos endpoints |
-| Razor Pages | Interface web para administração de locais monitorados |
-| Integração com Java | Recebe requisições da API Java para checagem de locais afetados |
-| Autenticação | Login simples com cookies para acesso ao painel administrativo |
+### 🔹 Criar Local Monitorado
+`POST /api/v1/users/{userId}/monitored-locations`
+
+```json
+{
+  "nomeLocal": "Ponte do Socorro",
+  "latitude": -23.6,
+  "longitude": -46.7,
+  "raioNotificacaoKm": 1.5
+}
+```
+
+---
+
+### 🔹 Listar Locais Monitorados
+`GET /api/v1/users/{userId}/monitored-locations`
+
+---
+
+### 🔹 Buscar Local Monitorado por ID
+`GET /api/v1/users/{userId}/monitored-locations/{locationId}`
+
+---
+
+### 🔹 Atualizar Local Monitorado
+`PUT /api/v1/users/{userId}/monitored-locations/{locationId}`
+
+```json
+{
+  "id": 1,
+  "userId": 1,
+  "nomeLocal": "Casa Reformada",
+  "latitude": -23.61,
+  "longitude": -46.71,
+  "raioNotificacaoKm": 2.0,
+  "dataCriacao": "2025-06-08T00:00:00Z",
+  "dataAtualizacao": "2025-06-08T00:00:00Z"
+}
+```
+
+---
+
+### 🔹 Deletar Local Monitorado
+`DELETE /api/v1/users/{userId}/monitored-locations/{locationId}`
+
+---
+
+### 🔹 Endpoint Interno (Java)
+`GET /api/v1/internal/monitored-locations/all-active`
+
+**Header obrigatório:**
+```
+X-Internal-Api-Key: SUA_CHAVE_INTERNA
+```
+
+---
+
+## 🖼️ Interface Razor Pages
+
+- /Admin/MonitoredLocationsManager/Index
+- CRUD completo de locais monitorados com autenticação por cookie
+
+---
+
+## 🌐 Integração com a API Java
+
+- A API Java identifica um novo alerta crítico ou hotspot.
+- Ela chama GET /api/v1/internal/monitored-locations/all-active na API C#.
+- A API C# retorna todos os locais monitorados ativos.
+- A API Java calcula quais locais estão dentro do raio de risco.
+- Se encontrar locais afetados, envia notificação push personalizada ao usuário.
 
 ---
 
@@ -112,42 +167,24 @@ Lá você poderá testar os endpoints da API diretamente pelo navegador.
 
 | Pasta | Finalidade |
 |:------|:-----------|
-| `Controllers` | Contém os endpoints REST da API |
-| `Pages/Admin/` | Interface administrativa Razor Pages |
-| `Models/` | Entidades da aplicação |
-| `Services/` | Regras de negócio isoladas |
-| `Data/` | Contexto do banco de dados (EF Core) |
-| `wwwroot/` | Arquivos estáticos da aplicação |
+| Controllers | Contém os endpoints REST da API |
+| Pages/Admin/ | Interface administrativa Razor Pages |
+| Models/ | Entidades da aplicação |
+| Services/ | Regras de negócio isoladas |
+| Data/ | Contexto do banco de dados (EF Core) |
+| Images | Imagens dos Diagramas |
+| wwwroot/ | Arquivos estáticos da aplicação |
 
 ---
 
-## 📦 Exemplo de Endpoint
+## ✅ Requisitos Atendidos
 
-**POST** `/api/v1/users/{userId}/monitored-locations`
-
-```json
-{
-  "nomeLocal": "Casa",
-  "latitude": -23.5678,
-  "longitude": -46.6789,
-  "raioNotificacaoKm": 2.0
-}
-```
-
----
-
-## 🧠 Inteligência Artificial (Python)
-
-- **/ia/classify_text**: classifica texto de alertas por tipo e severidade  
-- **/ia/cluster_alerts**: agrupa alertas geograficamente em hotspots
-
----
-
-## 🤝 Integração com Java
-
-- A API Java consulta `GET /api/v1/internal/monitored-locations/all-active` da API C#
-- Compara geograficamente os locais monitorados com novos hotspots
-- Envia notificações push para usuários impactados
+- [x] API REST com boas práticas
+- [x] Banco relacional (Oracle ou InMemory)
+- [x] Relacionamento 1:N (Usuário → Locais)
+- [x] Documentação Swagger
+- [x] Razor Pages + TagHelpers
+- [x] Migrations (estrutura via EF Core)
 
 ---
 
