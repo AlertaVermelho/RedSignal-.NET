@@ -45,25 +45,17 @@ Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionament
 
 ### 2. Clonar o repositório
 
-```bash
+bash
 git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
 cd RedSignal-.NET
-```
 
-### 3. Executar com Banco em Memória (para testes ou vídeo)
 
-Edite o `Program.cs`:
+### 3. Rodar a aplicação
 
-```csharp
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("RedSignalDB"));
-```
-
-### 4. Rodar a aplicação
-
-```bash
+bash
+dotnet build
 dotnet run
-```
+
 
 Acesse o navegador:  
 📍 http://localhost:5135/swagger
@@ -90,33 +82,33 @@ Interface web: http://localhost:5135/Admin/MonitoredLocationsManager
 ## 🧠 Endpoints da API
 
 ### 🔹 Criar Local Monitorado
-`POST /api/v1/users/{userId}/monitored-locations`
+POST /api/v1/users/{userId}/monitored-locations
 
-```json
+json
 {
   "nomeLocal": "Ponte do Socorro",
   "latitude": -23.6,
   "longitude": -46.7,
   "raioNotificacaoKm": 1.5
 }
-```
+
 
 ---
 
 ### 🔹 Listar Locais Monitorados
-`GET /api/v1/users/{userId}/monitored-locations`
+GET /api/v1/users/{userId}/monitored-locations
 
 ---
 
 ### 🔹 Buscar Local Monitorado por ID
-`GET /api/v1/users/{userId}/monitored-locations/{locationId}`
+GET /api/v1/users/{userId}/monitored-locations/{locationId}
 
 ---
 
 ### 🔹 Atualizar Local Monitorado
-`PUT /api/v1/users/{userId}/monitored-locations/{locationId}`
+PUT /api/v1/users/{userId}/monitored-locations/{locationId}
 
-```json
+json
 {
   "id": 1,
   "userId": 1,
@@ -127,22 +119,21 @@ Interface web: http://localhost:5135/Admin/MonitoredLocationsManager
   "dataCriacao": "2025-06-08T00:00:00Z",
   "dataAtualizacao": "2025-06-08T00:00:00Z"
 }
-```
+
 
 ---
 
 ### 🔹 Deletar Local Monitorado
-`DELETE /api/v1/users/{userId}/monitored-locations/{locationId}`
+DELETE /api/v1/users/{userId}/monitored-locations/{locationId}
 
 ---
 
 ### 🔹 Endpoint Interno (Java)
-`GET /api/v1/internal/monitored-locations/all-active`
+GET /api/v1/internal/monitored-locations/all-active
 
 **Header obrigatório:**
-```
 X-Internal-Api-Key: SUA_CHAVE_INTERNA
-```
+
 
 ---
 
