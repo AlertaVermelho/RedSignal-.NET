@@ -29,7 +29,9 @@ A aplicação foi desenvolvida como uma API REST com interface administrativa, r
 
 Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionamentos entre Usuários, Alertas, Locais Monitorados e Hotspots:
 
-![Diagrama Lógico](./Images/Logical.png)  
+![Diagrama Lógico](./Images/Logical.png)
+
+
 ![Diagrama Relacional](./Images/Relational.png)
 
 ---
@@ -46,16 +48,14 @@ Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionament
 ### 2. Clonar o repositório
 
 bash
-git clone https://github.com/AlertaVermelho/RedSignal-.NET.git
-cd RedSignal-.NET
-
+- git clone https://github.com/AlertaVermelho/RedSignal-.NET.git
+- cd RedSignal-.NET
 
 ### 3. Rodar a aplicação
 
 bash
-dotnet build
-dotnet run
-
+- dotnet build
+- dotnet run
 
 Acesse o navegador:  
 📍 http://localhost:5135/swagger
@@ -92,7 +92,6 @@ json
   "raioNotificacaoKm": 1.5
 }
 
-
 ---
 
 ### 🔹 Listar Locais Monitorados
@@ -120,7 +119,6 @@ json
   "dataAtualizacao": "2025-06-08T00:00:00Z"
 }
 
-
 ---
 
 ### 🔹 Deletar Local Monitorado
@@ -133,7 +131,6 @@ GET /api/v1/internal/monitored-locations/all-active
 
 **Header obrigatório:**
 X-Internal-Api-Key: SUA_CHAVE_INTERNA
-
 
 ---
 
