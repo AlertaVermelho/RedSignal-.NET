@@ -10,7 +10,7 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
         // Conexão com o Oracle — substitua pelos dados reais
-        optionsBuilder.UseOracle("User Id=xxxxxx;Password=xxxxxx;Data Source=localhost:1521/br.com.fiap.oracle;");
+        optionsBuilder.UseOracle("User Id=RM555698;Password=fiap25;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=oracle.fiap.com.br)(PORT=1521))(CONNECT_DATA=(SID=ORCL)))");
 
         return new AppDbContext(optionsBuilder.Options);
     }

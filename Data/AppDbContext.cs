@@ -18,6 +18,12 @@ namespace RedSignal.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Mapeia o nome da tabela USUARIOS (em maiúsculo, conforme Oracle)
+            modelBuilder.Entity<Usuario>().ToTable("USUARIOS");
+
+            // Mapeia o nome da tabela LOCAIS_MONITORADOS
+            modelBuilder.Entity<LocalMonitorado>().ToTable("LOCAIS_MONITORADOS");
+
             // Relacionamento 1:N entre Usuario e LocaisMonitorados
             modelBuilder.Entity<Usuario>()
                 .HasMany(u => u.LocaisMonitorados)

@@ -3820,23 +3820,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\beatr\\.nuget\\packages\\": {},
+    "C:\\Users\\ajour\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\beatr\\Downloads\\RedSignal\\RedSignal\\RedSignal.csproj",
+      "projectUniqueName": "C:\\Users\\ajour\\OneDrive\\Documents\\GitHub\\RedSignal-.NET\\RedSignal.csproj",
       "projectName": "RedSignal",
-      "projectPath": "C:\\Users\\beatr\\Downloads\\RedSignal\\RedSignal\\RedSignal.csproj",
-      "packagesPath": "C:\\Users\\beatr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\beatr\\Downloads\\RedSignal\\RedSignal\\obj\\",
+      "projectPath": "C:\\Users\\ajour\\OneDrive\\Documents\\GitHub\\RedSignal-.NET\\RedSignal.csproj",
+      "packagesPath": "C:\\Users\\ajour\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ajour\\OneDrive\\Documents\\GitHub\\RedSignal-.NET\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\beatr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ajour\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
