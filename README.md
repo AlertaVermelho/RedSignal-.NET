@@ -53,6 +53,7 @@ cd RedSignal-.NET
 ### 3. Rodar a aplicação
 
 ```bash
+dotnet build
 dotnet run
 ```
 
