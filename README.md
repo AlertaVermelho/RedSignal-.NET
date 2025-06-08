@@ -46,7 +46,7 @@ Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionament
 ### 2. Clonar o repositório
 
 bash
-git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
+git clone https://github.com/AlertaVermelho/RedSignal-.NET.git
 cd RedSignal-.NET
 
 
