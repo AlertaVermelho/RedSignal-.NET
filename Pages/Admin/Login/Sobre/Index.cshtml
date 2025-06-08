@@ -1,0 +1,19 @@
+@page
+@model RedSignal.Pages.Admin.Sobre.IndexModel
+@{
+    ViewData["Title"] = "Sobre o Sistema";
+}
+
+<h1>Sobre o RedSignal</h1>
+
+<p>Este sistema foi desenvolvido como parte da disciplina <strong>Advanced Business Development with .NET</strong> da FIAP.</p>
+<p>Ele permite o monitoramento de locais com risco de enchente ou deslizamento, com autenticação, interface administrativa e banco Oracle.</p>
+
+<ul>
+    <li>API REST com Swagger</li>
+    <li>Login protegido com cookie</li>
+    <li>Administração com Razor Pages</li>
+    <li>Banco relacional (Oracle) + EF Core</li>
+</ul>
+
+<a asp-page="/Admin/MonitoredLocationsManager/Index">← Voltar</a>

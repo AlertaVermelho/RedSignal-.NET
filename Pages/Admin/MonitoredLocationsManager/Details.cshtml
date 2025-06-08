@@ -1,0 +1,42 @@
+@page "{id}"
+@model RedSignal.Pages.Admin.MonitoredLocationsManager.DetailsModel
+@{
+    ViewData["Title"] = "Detalhes do Local Monitorado";
+}
+
+<h1>Detalhes do Local Monitorado</h1>
+
+@if (Model.Local == null)
+{
+    <p><strong>Local não encontrado.</strong></p>
+}
+else
+{
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Local.Id</dd>
+
+        <dt class="col-sm-2">User ID</dt>
+        <dd class="col-sm-10">@Model.Local.UserId</dd>
+
+        <dt class="col-sm-2">Nome do Local</dt>
+        <dd class="col-sm-10">@Model.Local.NomeLocal</dd>
+
+        <dt class="col-sm-2">Latitude</dt>
+        <dd class="col-sm-10">@Model.Local.Latitude</dd>
+
+        <dt class="col-sm-2">Longitude</dt>
+        <dd class="col-sm-10">@Model.Local.Longitude</dd>
+
+        <dt class="col-sm-2">Raio de Notificação (km)</dt>
+        <dd class="col-sm-10">@Model.Local.RaioNotificacaoKm</dd>
+
+        <dt class="col-sm-2">Criado em</dt>
+        <dd class="col-sm-10">@Model.Local.DataCriacao</dd>
+
+        <dt class="col-sm-2">Atualizado em</dt>
+        <dd class="col-sm-10">@Model.Local.DataAtualizacao</dd>
+    </dl>
+
+    <a asp-page="Index">← Voltar à lista</a>
+}

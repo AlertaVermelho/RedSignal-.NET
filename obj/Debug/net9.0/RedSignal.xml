@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RedSignal</name>
+    </assembly>
+    <members>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.Create(System.Int64,RedSignal.Models.DTOs.LocalMonitoradoCreateDto)">
+            <summary>Cadastra um novo local monitorado para o usuário</summary>
+            <param name="userId">ID do usuário</param>
+            <param name="dto">Dados do local monitorado</param>
+        </member>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.GetAll(System.Int64)">
+            <summary>Lista todos os locais monitorados de um usuário</summary>
+        </member>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.GetById(System.Int64,System.Int64)">
+            <summary>Busca um local monitorado específico por ID</summary>
+        </member>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.Update(System.Int64,System.Int64,RedSignal.Models.LocalMonitorado)">
+            <summary>Atualiza os dados de um local monitorado</summary>
+        </member>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.Delete(System.Int64,System.Int64)">
+            <summary>Remove um local monitorado</summary>
+        </member>
+        <member name="M:RedSignal.Controllers.MonitoredLocationsController.GetAllActive(System.String)">
+            <summary>Retorna todos os locais monitorados ativos</summary>
+            <remarks>Endpoint interno usado pela API Java. Requer header X-Internal-Api-Key</remarks>
+        </member>
+    </members>
+</doc>
