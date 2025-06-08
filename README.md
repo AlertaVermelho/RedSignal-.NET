@@ -167,7 +167,7 @@ CRUD completo de locais monitorados com autenticação por cookie
 ## ✅ Requisitos Atendidos
 
 - [x] API REST com boas práticas
-- [x] Banco relacional (Oracle ou InMemory)
+- [x] Banco relacional (Oracle)
 - [x] Relacionamento 1:N (Usuário → Locais)
 - [x] Documentação Swagger
 - [x] Razor Pages + TagHelpers
