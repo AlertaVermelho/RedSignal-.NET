@@ -47,15 +47,17 @@ Abaixo está o modelo lógico/relacional do sistema, que mostra os relacionament
 
 ### 2. Clonar o repositório
 
-bash
-- git clone https://github.com/AlertaVermelho/RedSignal-.NET.git
-- cd RedSignal-.NET
+```bash
+git clone https://github.com/AlertaVermelho/RedSignal-.NET.git
+cd RedSignal-.NET
+```
 
 ### 3. Rodar a aplicação
 
-bash
-- dotnet build
-- dotnet run
+```bash
+dotnet build
+dotnet run
+```
 
 Acesse o navegador:  
 📍 http://localhost:5135/swagger
@@ -64,8 +66,7 @@ Acesse o navegador:
 
 ## 📘 Swagger
 
-A documentação da API está disponível em:
-
+A documentação da API está disponível em:  
 📎 [http://localhost:5135/swagger](http://localhost:5135/swagger)
 
 ---
@@ -82,32 +83,31 @@ Interface web: http://localhost:5135/Admin/MonitoredLocationsManager
 ## 🧠 Endpoints da API
 
 ### 🔹 Criar Local Monitorado
-POST /api/v1/users/{userId}/monitored-locations
 
-json
+**POST** `/api/v1/users/{userId}/monitored-locations`
+
+```json
 {
   "nomeLocal": "Ponte do Socorro",
   "latitude": -23.6,
   "longitude": -46.7,
   "raioNotificacaoKm": 1.5
 }
-
----
+```
 
 ### 🔹 Listar Locais Monitorados
-GET /api/v1/users/{userId}/monitored-locations
 
----
+**GET** `/api/v1/users/{userId}/monitored-locations`
 
 ### 🔹 Buscar Local Monitorado por ID
-GET /api/v1/users/{userId}/monitored-locations/{locationId}
 
----
+**GET** `/api/v1/users/{userId}/monitored-locations/{locationId}`
 
 ### 🔹 Atualizar Local Monitorado
-PUT /api/v1/users/{userId}/monitored-locations/{locationId}
 
-json
+**PUT** `/api/v1/users/{userId}/monitored-locations/{locationId}`
+
+```json
 {
   "id": 1,
   "userId": 1,
@@ -118,33 +118,32 @@ json
   "dataCriacao": "2025-06-08T00:00:00Z",
   "dataAtualizacao": "2025-06-08T00:00:00Z"
 }
-
----
+```
 
 ### 🔹 Deletar Local Monitorado
-DELETE /api/v1/users/{userId}/monitored-locations/{locationId}
 
----
+**DELETE** `/api/v1/users/{userId}/monitored-locations/{locationId}`
 
 ### 🔹 Endpoint Interno (Java)
-GET /api/v1/internal/monitored-locations/all-active
 
-**Header obrigatório:**
-X-Internal-Api-Key: SUA_CHAVE_INTERNA
+**GET** `/api/v1/internal/monitored-locations/all-active`
+
+**Header obrigatório:**  
+`X-Internal-Api-Key: SUA_CHAVE_INTERNA`
 
 ---
 
 ## 🖼️ Interface Razor Pages
 
-- /Admin/MonitoredLocationsManager/Index
-- CRUD completo de locais monitorados com autenticação por cookie
+- `/Admin/MonitoredLocationsManager/Index`  
+CRUD completo de locais monitorados com autenticação por cookie
 
 ---
 
 ## 🌐 Integração com a API Java
 
 - A API Java identifica um novo alerta crítico ou hotspot.
-- Ela chama GET /api/v1/internal/monitored-locations/all-active na API C#.
+- Ela chama `GET /api/v1/internal/monitored-locations/all-active` na API C#.
 - A API C# retorna todos os locais monitorados ativos.
 - A API Java calcula quais locais estão dentro do raio de risco.
 - Se encontrar locais afetados, envia notificação push personalizada ao usuário.
@@ -153,15 +152,15 @@ X-Internal-Api-Key: SUA_CHAVE_INTERNA
 
 ## 🖥️ Estrutura de Pastas
 
-| Pasta | Finalidade |
-|:------|:-----------|
-| Controllers | Contém os endpoints REST da API |
-| Pages/Admin/ | Interface administrativa Razor Pages |
-| Models/ | Entidades da aplicação |
-| Services/ | Regras de negócio isoladas |
-| Data/ | Contexto do banco de dados (EF Core) |
-| Images | Imagens dos Diagramas |
-| wwwroot/ | Arquivos estáticos da aplicação |
+| Pasta            | Finalidade                                 |
+|------------------|--------------------------------------------|
+| Controllers      | Contém os endpoints REST da API            |
+| Pages/Admin/     | Interface administrativa Razor Pages       |
+| Models/          | Entidades da aplicação                     |
+| Services/        | Regras de negócio isoladas                 |
+| Data/            | Contexto do banco de dados (EF Core)       |
+| Images           | Imagens dos Diagramas                      |
+| wwwroot/         | Arquivos estáticos da aplicação            |
 
 ---
 
