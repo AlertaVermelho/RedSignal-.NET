@@ -50,16 +50,7 @@ git clone https://github.com/BeatrizFerreira01/RedSignal-.NET.git
 cd RedSignal-.NET
 ```
 
-### 3. Executar com Banco em Memória (para testes ou vídeo)
-
-Edite o `Program.cs`:
-
-```csharp
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("RedSignalDB"));
-```
-
-### 4. Rodar a aplicação
+### 3. Rodar a aplicação
 
 ```bash
 dotnet run
