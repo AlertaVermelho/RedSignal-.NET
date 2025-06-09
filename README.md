@@ -185,7 +185,7 @@ CRUD completo de locais monitorados com autenticação por cookie
 
 ## 🎥 Pitch & Demonstração
 
-- [🔗 Link para o vídeo Pitch (YouTube)](https://youtube.com/...)
+- [🔗 Link para o vídeo Pitch (YouTube)](https://youtu.be/DieKegRt6ao)
 - [🔗 Link para a Demonstração Completa (YouTube)](https://youtube.com/...)
 
 ---
